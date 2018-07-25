@@ -1,7 +1,47 @@
-﻿@page "/"
+@page "/"
+@inject IToastService ToastService
+<form>
+    <div class="form-group">
+        <label for="Title">Title*</label>
+        <input type="text" class="form-control" id="Title" aria-describedby="Title" placeholder="Enter a title..." value=@Title onchange=@((e) => Title = (string)e.Value) />
+        <small id="TitleHelp" class="form-text text-muted">The heading of the notification.</small>
+    </div>
+    <div class="form-group">
+        <label for="Text">Text</label>
+        <input type="text" class="form-control" id="Text" aria-describedby="Text" placeholder="Enter some text..." value="@Text" onchange=@((e) => Text = (string)e.Value)/>
+        <small id="TextHelp" class="form-text text-muted">The body of the notification.</small>
+    </div>
+    <div class="form-group">
+        <label for="Type">Type</label>
+        <input type="text" class="form-control" id="Type" aria-describedby="Type" placeholder="Enter a type eg. Info, Success, Warning, Error or nothing at all." value="@Type" onchange=@((e) => Type = (ToastType)e.Value)/>
+        <small id="TypeHelp" class="form-text text-muted">The type (borderline color) of the notification.</small>
+    </div>
+    <div class="form-group">
+        <label for="Icon">Icon</label>
+        <input type="text" class="form-control" id="Icon" aria-describedby="Icon" placeholder="Enter an absolute or online path to an image." value="@Icon" onchange=@((e) => Icon = (string)e.Value)/>
+        <small id="TypeHelp" class="form-text text-muted">The icon displayed on the notification.</small>
+    </div>
+    <div class="form-group">
+        <label for="Timeout">Timeout</label>
+        <input type="text" class="form-control" id="Timeout" aria-describedby="Timeout" placeholder="Enter a timeout in ms eg. 3500" value="@Timeout" onchange=@((e) => Timeout = (int)e.Value) />
+        <small id="TypeHelp" class="form-text text-muted">The timeout to let the notification(toast) fade away (in ms)</small>
+    </div>
+</form>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<button onclick=@SendToast>Send a toast!</button>
+
+@functions
+{
+private string Text { get; set; } = "My Text";
+private string Title { get; set; } = "My Title";
+private string Icon { get; set; } //= "images/github.jpg";
+private int Timeout { get; set; }
+private ToastType Type { get; set; } = ToastType.Success; //= "images/github.jpg";
+
+private void SendToast()
+{
+    Toast newToast = ToastService.Create(Title, Text, Type, Icon, Timeout);
+}
+}

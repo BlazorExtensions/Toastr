@@ -18,4 +18,8 @@
     <ProjectReference Include="..\..\src\Blazor.Extensions.Toastr\Blazor.Extensions.Toastr.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
