@@ -14,5 +14,12 @@ namespace Blazor.Extensions
         public int? Timeout { get; set; } = 4500;
         public Action Callback { get; set; }
         #endregion
+
+        #region Overriden Functions
+        public override string ToString()
+        {
+            return $"Title: {this.Title}\nText : {this.Text}\nType : {this.Type.ToString()}\nIcon: {this.Icon}\nTimeout : {this.Timeout}";
+        }
+        #endregion
     }
 }

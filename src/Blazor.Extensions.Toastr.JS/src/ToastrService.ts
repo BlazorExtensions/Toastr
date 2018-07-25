@@ -41,9 +41,6 @@ export class ToastrService {
         toast.appendChild(img);
       }
 
-      console.log("type: " + ToastType[toastObject.type]);
-      console.log("type: " + toastObject.type)
-      console.log(toastObject);
       // type
       if (toastObject.type) {
         toast.className += ' vanillatoasts-' + ToastType[toastObject.type].toLowerCase();
@@ -75,9 +72,6 @@ export class ToastrService {
         container.removeChild(toast);
         // call dotnet to remove.
       }
-
-      //add toast to object so its easily gettable by its id
-      //VanillaToasts.toasts[toast.id] = toast;
 
       return toast;
     });

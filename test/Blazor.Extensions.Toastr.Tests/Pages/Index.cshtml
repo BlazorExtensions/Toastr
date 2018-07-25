@@ -13,8 +13,8 @@
     </div>
     <div class="form-group">
         <label for="Type">Type</label>
-        <input type="text" class="form-control" id="Type" aria-describedby="Type" placeholder="Enter a type eg. Info, Success, Warning, Error or nothing at all." value="@Type" onchange=@((e) => Type = (ToastType)e.Value)/>
-        <small id="TypeHelp" class="form-text text-muted">The type (borderline color) of the notification.</small>
+        <input type="text" class="form-control" id="Type" aria-describedby="Type" placeholder="Enter a type" value="@Type" onchange=@((e) => Type = (ToastType)Enum.Parse(typeof(ToastType),(string)e.Value))/>
+        <small id="TypeHelp" class="form-text text-muted">The type (borderline color) of the notification. e.g. Info, Success, Warning, Error or nothing at all. </small>
     </div>
     <div class="form-group">
         <label for="Icon">Icon</label>
@@ -34,14 +34,14 @@
 
 @functions
 {
-private string Text { get; set; } = "My Text";
-private string Title { get; set; } = "My Title";
-private string Icon { get; set; } //= "images/github.jpg";
-private int Timeout { get; set; }
-private ToastType Type { get; set; } = ToastType.Success; //= "images/github.jpg";
+    private string Text { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+    private string Title { get; set; } = "Notification Title";
+    private string Icon { get; set; } = "images/github.svg";
+    private int Timeout { get; set; } = 4500;
+    private ToastType Type { get; set; } = ToastType.Info;
 
-private void SendToast()
-{
-    Toast newToast = ToastService.Create(Title, Text, Type, Icon, Timeout);
-}
+    private void SendToast()
+    {
+        Toast newToast = ToastService.Create(Title, Text, Type, Icon, Timeout);
+    }
 }

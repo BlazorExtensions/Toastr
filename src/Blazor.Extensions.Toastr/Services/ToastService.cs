@@ -7,6 +7,7 @@ namespace Blazor.Extensions
     {
         public Toast Create(string title, string text = null, ToastType? type = null, string icon = null, int? timeout = null)
         {
+            // TODO: Support Callback Function (Blazor 0.5.0).
             Toast toast = new Toast
             {
                 Title = title,
@@ -15,8 +16,8 @@ namespace Blazor.Extensions
                 Icon = icon,
                 Timeout = timeout,
             };
-
-            return RegisteredFunction.Invoke<Toast>(MethodNames.CREATE_METHOD, toast);
+            RegisteredFunction.Invoke<Toast>(MethodNames.CREATE_METHOD, toast);
+            return toast;
         }
     }
 }
