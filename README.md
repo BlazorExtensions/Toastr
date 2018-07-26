@@ -18,14 +18,14 @@ Currently not (yet) supported
 ```csharp
 var serviceProvider = new BrowserServiceProvider(services =>
 {
-    services.AddToasts();
+    services.AddToastr();
 });
 ```
 
 ### Inject into component/pages
 ```csharp
 @using Blazor.Extensions
-@inject IToastService ToastService
+@inject IToastService Toastr
 ```
 
 
@@ -33,12 +33,21 @@ var serviceProvider = new BrowserServiceProvider(services =>
 ```csharp
 private void SendToast()
 {
-    Toast newToast = ToastService.Create(Title, Text, Type, Icon, Timeout);
+    Toast newToast = Toastr.CreateAsync(Title, Text, Type, Icon, Timeout);
 }
 ```
 
 ### Setting Callbacks
-Not yet supported.
+```
+    private async Task SendToast()
+    {
+        Toast newToast = await Toastr.CreateAsync(Title, Text, Type, Icon, Timeout, CallWhenClickedOnToast);
+    }
+    private void CallWhenClickedOnToast()
+    {
+        Console.WriteLine("Click on the toast, triggered this C# function.");
+    }
+```
 
 ### Setting Defaults
 Not yet supported.
