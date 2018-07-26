@@ -1,3 +1,4 @@
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,12 @@ namespace Blazor.Extensions
         public int? Timeout { get; set; } = 4500;
         public Action Callback { get; set; }
         #endregion
+
+        [JSInvokable]
+        public void ActOnCallback()
+        {
+            this.Callback?.Invoke();
+        }
 
         #region Overriden Functions
         public override string ToString()

@@ -1,13 +1,13 @@
 using System;
-using Microsoft.AspNetCore.Blazor.Browser.Interop;
+using System.Threading.Tasks;
+using Microsoft.JSInterop;
 
 namespace Blazor.Extensions
 {
     public class ToastService : IToastService
     {
-        public Toast Create(string title, string text = null, ToastType? type = null, string icon = null, int? timeout = null)
+        public async Task<Toast> CreateAsync(string title, string text = null, ToastType? type = null, string icon = null, int? timeout = null, Action onClick = null)
         {
-            // TODO: Support Callback Function (Blazor 0.5.0).
             Toast toast = new Toast
             {
                 Title = title,
@@ -16,7 +16,8 @@ namespace Blazor.Extensions
                 Icon = icon,
                 Timeout = timeout,
             };
-            RegisteredFunction.Invoke<Toast>(MethodNames.CREATE_METHOD, toast);
+            await JSRuntime.Current.InvokeAsync<object>(MethodNames.CREATE, toast, new DotNetObjectRef(toast));
+            toast.Callback = onClick;
             return toast;
         }
     }

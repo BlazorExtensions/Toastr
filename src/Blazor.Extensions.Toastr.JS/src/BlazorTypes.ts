@@ -11,7 +11,7 @@ export interface MethodOptions {
 export interface InvocationResult {
   succeeded: boolean;
   result?: any;
-  message?: string;
+  message?: string;ToastService
 }
 
 export interface MethodIdentifier {
@@ -35,3 +35,9 @@ export type BlazorType = {
   invokeDotNetMethodAsync<T>(methodOptions: MethodOptions, ...args: any[]): Promise<T | null>,
   platform: Platform
 };
+
+export interface DotNetObjectRef {
+  value: object;
+  invokeMethodAsync: (methodName : string) => void;
+  dispose: () => void;
+}
