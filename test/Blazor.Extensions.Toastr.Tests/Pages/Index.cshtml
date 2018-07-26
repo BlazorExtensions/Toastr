@@ -1,5 +1,5 @@
 @page "/"
-@inject IToastService ToastService
+@inject IToastrService Toastr
 <form>
     <div class="form-group">
         <label for="Title">Title*</label>
@@ -42,10 +42,10 @@
 
     private async Task SendToast()
     {
-        Toast newToast = await ToastService.CreateAsync(Title, Text, Type, Icon, Timeout, CallWhenClickedOnButton);
+        Toast newToast = await Toastr.CreateAsync(Title, Text, Type, Icon, Timeout, CallWhenClickedOnButton);
     }
     private void CallWhenClickedOnButton()
     {
-        Console.WriteLine("Call from JS triggered C#");
+        Console.WriteLine("Click on the toast, triggered this C# function.");
     }
 }

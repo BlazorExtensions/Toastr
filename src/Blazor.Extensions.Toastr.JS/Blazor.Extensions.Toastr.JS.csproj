@@ -23,6 +23,7 @@
   <ItemGroup>
     <WebpackInputs Remove="src\BlazorTypes.ts" />
     <WebpackInputs Remove="src\Toast.ts" />
+    <WebpackInputs Remove="src\ToastService.ts" />
   </ItemGroup>
 
   <Target Name="EnsureNpmRestored" Condition="!Exists('node_modules')">

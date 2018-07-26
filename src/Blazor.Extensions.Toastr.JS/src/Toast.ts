@@ -8,7 +8,7 @@ export type Toast = {
   type: ToastType;
   icon: string;
   timeout: number;
-  callback: () => Toast;
+  onClick: () => void;
 }
 
 export enum ToastType {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.Extensions
 {
-    public interface IToastService
+    public interface IToastrService
     {
         Task<Toast> CreateAsync(string title, string text = null, ToastType? type = null,  string icon = null, int? timeout = null, Action onClick = null);
     }

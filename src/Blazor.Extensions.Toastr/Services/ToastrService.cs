@@ -4,7 +4,7 @@ using Microsoft.JSInterop;
 
 namespace Blazor.Extensions
 {
-    public class ToastService : IToastService
+    public class ToastrService : IToastrService
     {
         public async Task<Toast> CreateAsync(string title, string text = null, ToastType? type = null, string icon = null, int? timeout = null, Action onClick = null)
         {
@@ -17,7 +17,7 @@ namespace Blazor.Extensions
                 Timeout = timeout,
             };
             await JSRuntime.Current.InvokeAsync<object>(MethodNames.CREATE, toast, new DotNetObjectRef(toast));
-            toast.Callback = onClick;
+            toast.OnClick = onClick;
             return toast;
         }
     }

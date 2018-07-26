@@ -7,7 +7,7 @@ namespace Blazor.Extensions.Toastr.Tests
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddToasts();
+            services.AddToastr();
         }
 
         public void Configure(IBlazorApplicationBuilder app)

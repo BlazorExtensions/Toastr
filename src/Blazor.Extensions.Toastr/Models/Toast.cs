@@ -13,13 +13,13 @@ namespace Blazor.Extensions
         public ToastType? Type { get; set; } = ToastType.Info;
         public string Icon { get; set; }
         public int? Timeout { get; set; } = 4500;
-        public Action Callback { get; set; }
+        public Action OnClick { get; set; }
         #endregion
 
         [JSInvokable]
-        public void ActOnCallback()
+        public void HandleOnClick()
         {
-            this.Callback?.Invoke();
+            this.OnClick?.Invoke();
         }
 
         #region Overriden Functions

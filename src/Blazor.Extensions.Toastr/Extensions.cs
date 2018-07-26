@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Blazor.Extensions
 {
-    public static class StorageExtensions
+    public static class Extensions
     {
-        public static IServiceCollection AddToasts(this IServiceCollection services)
+        public static IServiceCollection AddToastr(this IServiceCollection services)
         {
-            return services.AddSingleton<IToastService,ToastService>();
+            return services.AddSingleton<IToastrService,ToastrService>();
         }
     }
 }

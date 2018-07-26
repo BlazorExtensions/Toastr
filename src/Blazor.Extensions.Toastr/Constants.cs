@@ -6,6 +6,6 @@ namespace Blazor.Extensions
 {
     internal class MethodNames
     {
-        public const string CREATE = "BlazorExtensions.Toasts.Service.Create";
+        public const string CREATE = "BlazorExtensions.Toastr.Service.Create";
     }
 }
