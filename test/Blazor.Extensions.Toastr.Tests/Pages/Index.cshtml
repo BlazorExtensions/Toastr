@@ -42,9 +42,9 @@
 
     private async Task SendToast()
     {
-        Toast newToast = await Toastr.CreateAsync(Title, Text, Type, Icon, Timeout, CallWhenClickedOnButton);
+        Toast newToast = await Toastr.CreateAsync(Title, Text, Type, Icon, Timeout, CallWhenClickedOnToast);
     }
-    private void CallWhenClickedOnButton()
+    private void CallWhenClickedOnToast()
     {
         Console.WriteLine("Click on the toast, triggered this C# function.");
     }
