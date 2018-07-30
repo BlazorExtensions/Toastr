@@ -8,8 +8,15 @@
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeP2POutput</TargetsForTfmSpecificBuildOutput>
     <RootNamespace>Blazor.Extensions</RootNamespace>
   </PropertyGroup>
+  
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.4.0" />
+    <!-- .js/.css files will be referenced via <script>/<link> tags; other content files will just be included in the app's 'dist' directory without any tags referencing them -->
+    <EmbeddedResource Include="**\*.js" Exclude="bin\**\*.*;obj\**\*.*" LogicalName="blazor:js:%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource Include="**\*.css" Exclude="bin\**\*.*;obj\**\*.*" LogicalName="blazor:css:%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blazor.Extensions.Toastr.JS\Blazor.Extensions.Toastr.JS.csproj" PrivateAssets="All" />
